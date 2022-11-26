@@ -1,8 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-var lightbox = new SimpleLightbox('.gallery a', { /* options */ });
-
 const galleryContain = document.querySelector(".gallery")
 console.log(galleryContain);
 
@@ -25,7 +23,7 @@ function createGallaryCards(images) {
         .join("");   
 };
 
-var lightbox = new SimpleLightbox(".gallery__item", { 
+const lightbox = new SimpleLightbox(".gallery__item", { 
     captionsData: 'alt',
     captionPosition: 'bottom',
     captionDelay: '250',

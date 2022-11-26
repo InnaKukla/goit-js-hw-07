@@ -32,29 +32,29 @@ function createGallaryCards(images) {
 };
 
 
-const ImgClick = document.querySelector('.gallery')
+const imgClick = document.querySelector('.gallery')
 
-ImgClick.addEventListener('click', e => {
+imgClick.addEventListener('click', e => {
     e.preventDefault();
         if (e.target.nodeName !== "IMG") {
             return
         } 
 
+    const instance = basicLightbox.create(`<div class="modal"><img src="${e.target.dataset.source}" alt="${e.target.alt}"></div>`,
+        {
+            onShow: () => {
+                document.addEventListener('keydown', onEscapeButton);
+            },
+            onClose: () => {
+                document.removeEventListener('keydown', onEscapeButton);
+            },
+        })
+    
     function onEscapeButton(e) {
         if (e.code === "Escape") {
             instance.close()
         }
     }
-    const instance = basicLightbox.create(`<div class="modal">
-        <img src="${e.target.dataset.source}" alt="${e.target.alt}"></div>`,
-        {
-            onShow: () => {
-                document.addEventListener('keydown', onEscapeButton);
-            },
-            onclose: () => {
-                document.removeEventListener('keydown', onEscapeButton);
-            },
-        });
         instance.show()
     })
 
